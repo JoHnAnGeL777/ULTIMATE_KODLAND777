@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='icono.ico') }}">
+</head>
+<body>
+    <a href="https://github.com/JoHnAnGeL777/ULTIMATE_KODLAND777" class="repo">GITHUB REPOSITORIO :)</a>
+    <div class="espacio_consultar">
+        <h1>Consultar Clima de John Angel :)</h1>
+        <form method="POST">
+            <input type="text" name="ciudad" placeholder="Pon una ciudad : " required>
+            <button type="submit">Enviar</button>
+        </form>
+        {% if clima %}
+            {% if clima.error %}
+                <p class="error">{{ clima.error }}</p>
+            {% else %}
+                <div class="resultado">
+                    <h2>{{ clima.ciudad }}</h2>
+                    <p>Temperatura: {{ clima.temperatura }} °C</p>
+                    <p>Estado: {{ clima.descripcion }}</p>
+                    <p>Humedad: {{ clima.humedad }}%</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
